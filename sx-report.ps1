@@ -1,5 +1,10 @@
-$logDir = "$env:USERPROFILE\sx-tracker"
-$logFile = "$logDir\$(Get-Date -Format 'yyyy-MM-dd').csv"
+$logDir = Join-Path $env:LOCALAPPDATA "git-ticket-time-tracker"
+$logFile = Join-Path $logDir "$(Get-Date -Format 'yyyy-MM-dd').csv"
+
+if (!(Test-Path $logFile)) {
+    Write-Host "No log found today : $logFile"
+    exit
+}
 
 $data = Import-Csv $logFile -Delimiter ";"
 

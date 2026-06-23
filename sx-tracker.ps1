@@ -14,14 +14,14 @@ function Get-SxSubjectFromBranch {
     return $branch
 }
 
-$repo = "$HOME\Documents\GitHub\modulr"
-$logDir = "$env:USERPROFILE\sx-tracker"
-$logFile = "$logDir\$(Get-Date -Format 'yyyy-MM-dd').csv"
+$repo = Join-Path $HOME "Documents\GitHub\modulr"
+$logDir = Join-Path $env:LOCALAPPDATA "git-ticket-time-tracker"
+$logFile = Join-Path $logDir "$(Get-Date -Format 'yyyy-MM-dd').csv"
 
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 
 if (!(Test-Path $logFile)) {
-    "datetime;branch;ticket" | Out-File $logFile -Encoding utf8
+    "datetime;repo;branch;ticket" | Out-File $logFile -Encoding utf8
 }
 
 while ($true) {
