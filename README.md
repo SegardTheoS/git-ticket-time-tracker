@@ -44,7 +44,7 @@ Or automatically runs the script when the computer starts :
 ```powershell
 $Action = New-ScheduledTaskAction `
   -Execute "powershell.exe" `
-  -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\tools\sx-tracker\sx-watch.ps1"
+  -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File `"C:\Tools\git-ticket-time-tracker\sx-tracker.ps1`""
 
 $Trigger = New-ScheduledTaskTrigger -AtLogOn
 
