@@ -39,20 +39,10 @@ Start tracker:
 .\sx-watch.ps1
 ```
 
-Or automatically runs the script when the computer starts : 
+Or automatically runs the script when the computer starts. Run this command from the repository folder: : 
 
 ```powershell
-$Action = New-ScheduledTaskAction `
-  -Execute "powershell.exe" `
-  -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File `"C:\Tools\git-ticket-time-tracker\sx-tracker.ps1`""
-
-$Trigger = New-ScheduledTaskTrigger -AtLogOn
-
-Register-ScheduledTask `
-  -TaskName "SX Git Time Tracker" `
-  -Action $Action `
-  -Trigger $Trigger `
-  -Description "Track Git branch time for SX"
+.\install-scheduled-task.ps1
 ```
 
 Generate report:
